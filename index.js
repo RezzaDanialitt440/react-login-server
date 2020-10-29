@@ -3,6 +3,9 @@ const bodyParser =  require('body-parser')
 const app = express()
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
+//Enable CORS
+const cors = require('cors')
+app.use(cors())
 
 //Middleware
 app.use(express.json())
