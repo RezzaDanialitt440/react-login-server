@@ -8,8 +8,18 @@ router.get("/", verify, async (req, res) => {
         const users = await User.find()
         if (!users) return res.status(404).send("Empty Records");
 
-        let listOfName = users.map( user => user.name)
-        res.status(400).send(listOfName)
+        let responses = []
+
+        users.forEach((user) => {
+          let resp = {
+            _id: user._id,
+            name: user.name,
+          };
+
+          responses.push(resp);
+        });
+        
+        res.status(200).send(responses)
 });
 
 module.exports = router;

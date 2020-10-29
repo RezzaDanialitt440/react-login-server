@@ -46,6 +46,8 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
+
 router.post("/login", async (req, res) => {
   //Validate Request
   const { error } = loginValidation(req.body);
@@ -64,8 +66,14 @@ router.post("/login", async (req, res) => {
     { _id: user._id, email: user.email },
     process.env.TOKEN_SECRET
   );
-  // res.header('auth-token', token).send(token);
-  res.send(token);
+  
+  //Set Login Response
+  let loginResp = {
+    token: token,
+    username: user.name
+  }
+
+  res.status(200).send(loginResp);
 });
 
 module.exports = router;
