@@ -28,7 +28,7 @@ const swaggerOptions = {
             contact: {
                 name:'Rezza Danial'
             },
-            servers: ["http://localhost:3000"]
+            servers: ["http://localhost:4000"]
         }
     },
 
@@ -39,7 +39,7 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
-app.listen(3000,()=>console.log('Server started at localhost:3000'))
+app.listen(4000,()=>console.log('Server started at localhost:4000'))
 
 
 
