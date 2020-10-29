@@ -3,20 +3,23 @@ const verify = require('./verifyToken')
 const User = require('../model/User');
 
 router.get("/", verify, async (req, res) => {
-        //Check If Email Exist
-        const emailExist = await User.findOne({email: req.user.email})
-        if (emailExist) return res.status(200).send(emailExist);
 
-//   res.json({
-//     users: [
-//       {
-//         name: "Rezza Danial",
-//       },
-//       {
-//         name: "Amylia Syahira",
-//       },
-//     ],
-//   });
+        //Check If Users Exist in DB
+        const users = await User.find()
+        if (!users) return res.status(404).send("Empty Records");
+
+        let responses = []
+
+        users.forEach((user) => {
+          let resp = {
+            _id: user._id,
+            name: user.name,
+          };
+
+          responses.push(resp);
+        });
+        
+        res.status(200).send(responses)
 });
 
 module.exports = router;

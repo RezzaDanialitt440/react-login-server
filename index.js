@@ -3,6 +3,9 @@ const bodyParser =  require('body-parser')
 const app = express()
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
+//Enable CORS
+const cors = require('cors')
+app.use(cors())
 
 //Middleware
 app.use(express.json())
@@ -16,7 +19,7 @@ const authRoute = require('./routes/auth')
 const userRoute = require('./routes/user')
 
 //Routes Middleware & Prefix
-app.use('/api/user', authRoute)
+app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
 
 const swaggerOptions = {
@@ -28,7 +31,7 @@ const swaggerOptions = {
             contact: {
                 name:'Rezza Danial'
             },
-            servers: ["http://localhost:3000"]
+            servers: ["http://localhost:4000"]
         }
     },
 
@@ -39,7 +42,7 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
-app.listen(3000,()=>console.log('Server started at localhost:3000'))
+app.listen(4000,()=>console.log('Server started at localhost:4000'))
 
 
 
