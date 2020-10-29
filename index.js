@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser =  require('body-parser')
 const app = express()
+const swaggerJsDoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express')
 
 //Middleware
 app.use(express.json())
@@ -17,7 +19,27 @@ const userRoute = require('./routes/user')
 app.use('/api/user', authRoute)
 app.use('/api/users', userRoute)
 
-// app.use(bodyParser.json());
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: 'Digi Assessment API',
+            description: 'This API will allow user to Register new user, Login and Retrieve List of Members Name',
+               version: '1.0.1',
+            contact: {
+                name:'Rezza Danial'
+            },
+            servers: ["http://localhost:3000"]
+        }
+    },
+
+    apis: ['./routes/auth.js']
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+
 app.listen(3000,()=>console.log('Server started at localhost:3000'))
+
 
 
