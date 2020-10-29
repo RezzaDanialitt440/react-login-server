@@ -16,7 +16,7 @@ const authRoute = require('./routes/auth')
 const userRoute = require('./routes/user')
 
 //Routes Middleware & Prefix
-app.use('/api/user', authRoute)
+app.use('/api/auth', authRoute)
 app.use('/api/users', userRoute)
 
 const swaggerOptions = {
