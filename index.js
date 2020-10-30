@@ -7,8 +7,8 @@ const swaggerUi = require('swagger-ui-express')
 const cors = require('cors')
 app.use(cors())
 
-//Middleware
-app.use(express.json())
+// Init Middleware
+app.use(express.json({ extended: false }));
 
 //DB Connection
 const connectDB = require('./db')
