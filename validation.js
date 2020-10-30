@@ -6,7 +6,7 @@ const registerValidation = data => {
     const schema = {
         name: Joi.string().required(),
         email: Joi.string().email().required(),
-        password: Joi.string().min(12).required()
+        password: Joi.string().min(12).required().regex(/^(?=.*\d)(?=.*[A-Z])(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])(?=.*[a-zA-Z]).{12,}$/, "Alphanumeric and Special Character")
     }
 
 return Joi.validate(data, schema)
