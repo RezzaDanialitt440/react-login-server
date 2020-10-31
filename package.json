@@ -4,8 +4,7 @@
   "description": "react-login-server",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

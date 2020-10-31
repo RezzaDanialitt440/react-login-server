@@ -46,5 +46,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.listen(process.env.PORT || 4000,()=>console.log('Server started at port :' + process.env.PORT))
 
+app.get('/', (req, res) => {
+    res.send('Welcome to Take Home Assignment')
+})
+
 
 
