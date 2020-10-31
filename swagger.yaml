@@ -5,8 +5,8 @@ info:
     of Login feature using JWT and Get request
   version: 1.0.0
 externalDocs:
-  description: Find out more about the developer
-  url: http://rezzadanial.com
+  description: See in Github
+  url: https://github.com/RezzaDanialitt440/react-login-server
 servers:
 - url: https://digi-take-home-assignment.herokuapp.com
   description: Live Server
@@ -15,9 +15,6 @@ servers:
 tags:
 - name: user
   description: Operations about user
-  externalDocs:
-    description: See in Github
-    url: https://github.com/RezzaDanialitt440/react-login-server
 paths:
   /api/users/:
     post:
