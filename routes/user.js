@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const verify = require("./verifyToken");
 const User = require("../model/User");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
@@ -8,6 +7,16 @@ const dotenv = require("dotenv");
 dotenv.config();
 const auth = require('../middleware/auth')
 
+
+/**
+ * @swagger
+ * /:
+ *  post:
+ *    description: Use to register new user
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
 router.post(
   "/",
   [

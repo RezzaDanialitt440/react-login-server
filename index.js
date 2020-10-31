@@ -1,5 +1,4 @@
 const express = require('express')
-const bodyParser =  require('body-parser')
 const app = express()
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
@@ -11,7 +10,7 @@ app.use(cors())
 app.use(express.json({ extended: false }));
 
 //DB Connection
-const connectDB = require('./db')
+const connectDB = require('./config/db')
 connectDB();
 
 //Import Routes
@@ -35,7 +34,7 @@ const swaggerOptions = {
         }
     },
 
-    apis: ['./routes/auth.js']
+    apis: ['./routes/auth.js', './routes/user.js']
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
