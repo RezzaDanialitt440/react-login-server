@@ -2,8 +2,6 @@ const express = require('express')
 const app = express()
 const swaggerJsDoc = require('swagger-jsdoc')
 const swaggerUi = require('swagger-ui-express')
-const dotenv = require('dotenv')
-dotenv.config();
 
 //Enable CORS
 const cors = require('cors')
@@ -43,8 +41,8 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-
-app.listen(process.env.PORT || 4000,()=>console.log('Server started at port :' + process.env.PORT))
+const PORT = process.env.PORT || 4000;
+app.listen(PORT,()=>console.log('Server started at port : ' + PORT))
 
 app.get('/', (req, res) => {
     res.send('Welcome to Take Home Assignment')
