@@ -11,12 +11,16 @@ router.get('/', auth, async (req, res) => {
   try {
     
     const user = await User.findById(req.user.id).select('-password')
+    
+    if(user == null){
+      res.status(404).json({ msg: 'User Not Longer Exist'})
+    }
+    
     res.json(user)
 
   } catch (error) {
     console.log(error.message)
     res.status(500).send('Internal Server Error')
-    
   }
 
 })
@@ -66,12 +70,12 @@ router.post(
         { expiresIn: '5 days' },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.status(200).json({ token });
         }
       );
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server error');
+      res.status(500).send('Internal Server error');
     }
   }
 );

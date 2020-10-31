@@ -1,0 +1,138 @@
+openapi: 3.0.1
+info:
+  title: 'Take Home Assignment '
+  description: This is a API documentation for simple MERN application that consist
+    of Login feature using JWT and Get request
+  version: 1.0.0
+externalDocs:
+  description: Find out more about the developer
+  url: http://rezzadanial.com
+servers:
+- url: https://digi-take-home-assignment.herokuapp.com
+  description: Live Server
+- url: http://localhost:4000
+  description: Local Server
+tags:
+- name: user
+  description: Operations about user
+  externalDocs:
+    description: See in Github
+    url: https://github.com/RezzaDanialitt440/react-login-server
+paths:
+  /api/users/:
+    post:
+      tags:
+      - user
+      summary: Register account
+      operationId: registerUser
+      requestBody:
+        description: new user object
+        content:
+         application/json:
+            schema:
+              $ref: '#/components/schemas/Register'
+        required: true
+      responses:
+        201:
+          description: Will return token, Front End application will save this token
+            in local storage
+          content: {}
+        400:
+          description: Request body validation error. Please enter correct input.
+            Refer error message
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      x-codegen-request-body-name: body
+  /api/auth/login:
+    post:
+      tags:
+      - user
+      summary: Login account
+      operationId: loginUser
+      requestBody:
+        description: new user object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        200:
+          description: Will return token, Front End application will save this token
+            in local storage
+          content: {}
+        400:
+          description: Request body validation error. Please enter correct input.
+            Refer error message
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      x-codegen-request-body-name: body
+  /api/auth/:
+    get:
+      tags:
+      - user
+      summary: Authenticate current user
+      description: This API will be call from application on every page to validate
+        current user
+      operationId: authenticateUser
+      responses:
+        200:
+          description: Will return current user's details
+          content: {}
+        404:
+          description: User no longer exist in Database
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+        - BearerAuth: []
+  /api/users/retrieve-all:
+    get:
+      tags:
+      - user
+      summary: Retrieve list of registered users
+      description: This API will be call after user navigate to Application dashboard
+      operationId: retrieveAllUser
+      responses:
+        200:
+          description: Return list of registered users
+          content: {}
+        404:
+          description: No User in Database
+          content: {}
+        500:
+          description: Internal Server Error
+          content: {}
+      security:
+        - BearerAuth: []
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: 'Bearer'
+  schemas:
+    Register:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      xml:
+        name: User
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      xml:
+        name: User

@@ -4,10 +4,18 @@ const jwt = require('jsonwebtoken')
 const secretKey = 'secret'
 
 
-module.exports = function(req, res, next){
+function processHeader(header) {
+    // remove Bearer from header
+    let tokenOnly = header.split("Bearer ")
+    return tokenOnly[1];
+  }
+
+module.exports =  async function(req, res, next){
 
     //Get token from header
-    const token = req.header('Authorization');
+    const header = req.header('Authorization');
+    
+    const token = await processHeader(header)
 
     //check if no token
     if(!token){
@@ -17,7 +25,6 @@ module.exports = function(req, res, next){
     //verify token
     try {
         const decoded = jwt.verify(token, secretKey)
-
         req.user = decoded.user;
         next();
     } catch (error) {

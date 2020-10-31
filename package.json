@@ -4,7 +4,8 @@
   "description": "react-login-server",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "start-dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.11",
     "swagger-jsdoc": "^5.0.0",
-    "swagger-ui-express": "^4.1.4"
+    "swagger-ui-express": "^4.1.4",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

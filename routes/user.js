@@ -6,15 +6,6 @@ const jwt = require("jsonwebtoken");
 const auth = require('../middleware/auth')
 
 
-/**
- * @swagger
- * /:
- *  post:
- *    description: Use to register new user
- *    responses:
- *      '200':
- *        description: A successful response
- */
 router.post(
   "/",
   [
@@ -65,6 +56,7 @@ router.post(
           },
         };
 
+        //will hide later
         const secretKey = 'secret'
 
         jwt.sign(
