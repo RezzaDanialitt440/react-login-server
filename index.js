@@ -3,6 +3,10 @@ const app = express()
 const swaggerUi = require('swagger-ui-express')
 const YAML = require('yamljs');
 
+//Initialize environment variables
+require('dotenv').config();
+
+
 //Enable CORS
 const cors = require('cors')
 app.use(cors())
