@@ -6,8 +6,10 @@ const secretKey = 'secret'
 
 function processHeader(header) {
     // remove Bearer from header
-    let tokenOnly = header.split("Bearer ")
-    return tokenOnly[1];
+    if(header){
+        let tokenOnly = header.split("Bearer ")
+        return tokenOnly[1];
+    }    
   }
 
 module.exports =  async function(req, res, next){
