@@ -3,6 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 const connectDB = async()=>{
+    console.log("=======2======= "+ JSON.stringify(process.env.DB_CONNECT))
     await mongoose.connect(process.env.DB_CONNECT, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
     console.log('db connected...')
 }

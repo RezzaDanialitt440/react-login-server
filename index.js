@@ -16,6 +16,7 @@ app.use(express.json({ extended: false }));
 
 //DB Connection
 const connectDB = require('./config/db')
+console.log("=======1======= "+ JSON.stringify(process.env.DB_CONNECT))
 connectDB();
 
 //Import Routes
