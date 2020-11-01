@@ -13,7 +13,7 @@ router.post(
     check("email", "Please enter a valid email").isEmail(),
     check(
       "password",
-      "Password must more than 12 Alphanumric character and Symbol"
+      "Password must at least 12 Alphanumric character and Symbol"
     )
       .isLength({ min: 12 })
       .matches(
