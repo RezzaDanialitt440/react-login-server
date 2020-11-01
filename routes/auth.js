@@ -62,7 +62,7 @@ router.post(
         }
       };
 
-      const secretKey = 'secret'
+      const secretKey = process.env.TOKEN_SECRET
 
       jwt.sign(
         payload,

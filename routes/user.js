@@ -4,6 +4,7 @@ const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require('../middleware/auth')
+require('dotenv').config();
 
 
 router.post(
@@ -56,8 +57,7 @@ router.post(
           },
         };
 
-        //will hide later
-        const secretKey = 'secret'
+        const secretKey = process.env.TOKEN_SECRET
 
         jwt.sign(
           payload,

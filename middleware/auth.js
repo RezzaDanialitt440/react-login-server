@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
+require('dotenv').config();
 
-//will hide later
-const secretKey = 'secret'
+const secretKey = process.env.TOKEN_SECRET
 
 
 function processHeader(header) {

@@ -1,8 +1,8 @@
 
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-//will hide later
-const db = 'mongodb+srv://rezzadanial:root@digi-assessment.va2ma.mongodb.net/digi-user?retryWrites=true&w=majority'
+const db = process.env.BD_CONNECT
 
 const connectDB = async()=>{
     await mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
